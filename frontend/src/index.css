@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-md;
+    @apply border border-white/20 dark:border-gray-700/20;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-indigo-600;
+    @apply text-white font-semibold py-3 px-8 rounded-xl;
+    @apply hover:from-blue-600 hover:to-indigo-700;
+    @apply transform hover:scale-105 transition-all duration-200;
+    @apply shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 dark:bg-gray-700;
+    @apply text-gray-900 dark:text-white font-semibold py-3 px-8 rounded-xl;
+    @apply hover:bg-gray-300 dark:hover:bg-gray-600;
+    @apply transform hover:scale-105 transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl;
+    @apply shadow-lg hover:shadow-xl;
+    @apply transition-all duration-300;
+    @apply border border-gray-200 dark:border-gray-700;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl;
+    @apply bg-gray-100 dark:bg-gray-800;
+    @apply border border-gray-300 dark:border-gray-600;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+    @apply transition-all duration-200;
+    @apply text-gray-900 dark:text-white;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+}
