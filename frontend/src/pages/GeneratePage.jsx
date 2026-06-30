@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import api from '../services/apiClient';
 
 function GeneratePage() {
   const [searchParams] = useSearchParams();
@@ -64,22 +65,16 @@ function GeneratePage() {
     }, 800);
 
     try {
-      const response = await fetch('http://localhost:5000/api/images', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prompt: prompt,
-          style: style,
-          aspectRatio: aspectRatio,
-        }),
+      const resp = await api.post('/api/images', {
+        prompt: prompt,
+        style: style,
+        aspectRatio: aspectRatio,
       });
 
-      const data = await response.json();
+      const data = resp.data;
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || 'Something went wrong');
+      if (!data || !data.success) {
+        throw new Error(data?.message || 'Something went wrong');
       }
 
       clearInterval(stepInterval);

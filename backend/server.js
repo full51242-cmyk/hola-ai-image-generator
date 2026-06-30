@@ -4,10 +4,12 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const CLIENT_URL = process.env.CLIENT_URL || 'https://full51242-cmyk.github.io/ai-image-banalo';
+
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  origin: [CLIENT_URL],
   credentials: true,
 }));
 app.use(express.json());
@@ -220,7 +222,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🔗 Client URL: ${process.env.CLIENT_URL || 'http://localhost:5173'}`);
+  console.log(`🔗 Client URL: ${CLIENT_URL}`);
   console.log(`✅ Health check: http://localhost:${PORT}/api/health`);
   console.log(`🎨 AI Provider: Pollinations AI (FREE & no API key needed!)`);
 });

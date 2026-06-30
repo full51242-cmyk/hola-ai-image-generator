@@ -289,6 +289,43 @@ npm run build
 2. Connect your GitHub repository
 3. Deploy
 
+### Deploy to Railway (serve frontend from backend)
+
+1. Build the frontend locally (or in the Railway build step):
+```bash
+cd frontend
+npm install
+npm run build
+```
+
+2. Ensure the backend serves the built frontend (this repo already supports it when `NODE_ENV=production`).
+
+3. Commit and push your changes to GitHub.
+
+4. On Railway:
+- Create a new project and connect your GitHub repo.
+- Use a "Node.js" service and point the root directory to `backend`.
+- Set the following environment variables in Railway:
+  - `NODE_ENV=production`
+  - `CLIENT_URL=https://ai-image-banalo-production.up.railway.app` (or your frontend URL)
+  - `PORT` (Railway provides a port automatically; leave unset or set to `5000`)
+  - `MONGODB_URI` (if using a database)
+  - `JWT_SECRET` (production secret)
+
+5. For monorepo build (optional) set Railway's build command to:
+```bash
+cd frontend && npm ci && npm run build && cd ../backend && npm ci
+```
+
+6. Start command (in Railway service settings):
+```bash
+npm start
+```
+
+Notes:
+- After deployment, Railway will provide a public URL (for example `https://<project>.up.railway.app`). If you want to use a custom domain, configure it in Railway and update `CLIENT_URL` accordingly.
+- If you prefer deploying frontend separately (Vercel/Netlify), set `CLIENT_URL` to that public URL and deploy backend as an API-only service.
+
 ## Environment Variables
 
 ### Frontend (.env)
