@@ -4,12 +4,27 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const CLIENT_URL = process.env.CLIENT_URL || 'https://full51242-cmyk.github.io/ai-image-banalo';
+const CLIENT_URL = process.env.CLIENT_URL || 'https://full51242-cmyk.github.io';
+const allowedOrigins = [
+  CLIENT_URL,
+  'https://full51242-cmyk.github.io',
+  'https://full51242-cmyk.github.io/ai-image-banalo',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+].filter(Boolean);
 
 const app = express();
 
 app.use(cors({
-  origin: [CLIENT_URL],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+      return;
+    }
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
 }));
 app.use(express.json());
