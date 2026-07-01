@@ -65,7 +65,7 @@ function GeneratePage() {
     }, 800);
 
     try {
-      const resp = await api.post('/api/images', {
+      const resp = await api.post('/images', {
         prompt: prompt,
         style: style,
         aspectRatio: aspectRatio,

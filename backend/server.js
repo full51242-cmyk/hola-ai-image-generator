@@ -8,7 +8,6 @@ const CLIENT_URL = process.env.CLIENT_URL || 'https://full51242-cmyk.github.io';
 const allowedOrigins = [
   CLIENT_URL,
   'https://full51242-cmyk.github.io',
-  'https://full51242-cmyk.github.io/ai-image-banalo',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://localhost:3000',
@@ -17,7 +16,7 @@ const allowedOrigins = [
 
 const app = express();
 
-app.use(cors({
+const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -26,7 +25,10 @@ app.use(cors({
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
