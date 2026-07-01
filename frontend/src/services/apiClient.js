@@ -1,4 +1,4 @@
-import axios from 'axios';
+﻿import axios from 'axios';
 
 const PROD_BASE_URL = 'https://ai-image-banalo-production.up.railway.app';
 const configuredBaseUrl = import.meta.env.VITE_API_URL?.trim();
@@ -14,32 +14,6 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
   timeout: 30000,
-  transformResponse: [
-    (data) => {
-      if (typeof data === 'string') {
-        const trimmed = data.trim();
-
-        if (!trimmed || trimmed.startsWith('<')) {
-          return data;
-        }
-
-        try {
-          return JSON.parse(trimmed);
-        } catch {
-          return data;
-        }
-      }
-      return data;
-    },
-  ],
 });
 
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const contentType = error.response?.headers?.['content-type'] || '';
-    const responseData = error.response?.data;}
-
-)
-
-export default api
+export default api;
