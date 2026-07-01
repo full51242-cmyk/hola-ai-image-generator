@@ -7,7 +7,7 @@ const isLocalhost = typeof window !== 'undefined' && window.location.hostname ==
 const BASE_URL = configuredBaseUrl || (isLocalhost ? DEFAULT_BASE_URL : PROD_BASE_URL);
 
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL:'https://ai-image-banalo-production.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -23,7 +23,7 @@ const api = axios.create({
       }
       return data;
     },
-  ],
+  ]
 });
 
 api.interceptors.response.use(
