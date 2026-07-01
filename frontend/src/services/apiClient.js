@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Aapka live Railway backend URL (CORS aur 404 errors se bachne ke liye direct)
-const BASE_URL = 'https://ai-image-banalo-production.up.railway.app/api';
+// Backend API base URL
+const BASE_URL = 
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -34,7 +34,7 @@ api.interceptors.response.use(
     // Agar response string hai aur '<' se shuru ho raha hai (Yani HTML page aa gaya)
     if (typeof responseData === 'string' && responseData.trim().startsWith('<')) {
       return Promise.reject(
-        new Error('Backend ne JSON ke bajaye HTML return kiya hai. Apne Railway par endpoints ya route check karein.')
+        new Error('Backend ne JSON ke bajaye HTML return kiya hai. Apne par endpoints ya route check karein.')
       );
     }
     
