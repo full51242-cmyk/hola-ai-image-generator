@@ -367,4 +367,5 @@ MIT License - feel free to use this project for personal or commercial purposes.
 
 For issues and questions, please create an issue in the repository or contact support.
 #   h o l a - a i - i m a g e - g e n e r a t o r  
+ #   h o l a - a i - i m a g e - g e n e r a t o r  
  
