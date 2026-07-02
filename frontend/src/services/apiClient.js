@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Backend API base URL
-const BASE_URL = 
+// Backend API base URL for development. Uses Vite env or proxy.
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const api = axios.create({
   baseURL: BASE_URL,
