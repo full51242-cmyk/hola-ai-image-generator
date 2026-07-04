@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://full51242-cmyk.github.io/ai-image-banalo",
   "scripts": {
     "build": "cd frontend && npm run build",
     "start": "cd backend && npm start",
     "deploy": "npm --prefix frontend run deploy",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "homepage": "https://powerfull.github.io/my-app"
-
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
