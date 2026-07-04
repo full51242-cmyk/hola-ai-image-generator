@@ -6,7 +6,10 @@
   "scripts": {
     "build": "cd frontend && npm run build",
     "start": "cd backend && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "npm --prefix frontend run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "homepage": "https://powerfull.github.io/my-app"
+
   },
   "keywords": [],
   "author": "",
