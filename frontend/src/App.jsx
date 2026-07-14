@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 
 // Import all pages
@@ -13,6 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import AdminPage from './pages/AdminPage';
 import ContactPage from './pages/ContactPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import VideoPage from './pages/VideoPage';
 
 // Import components
 import Navbar from './components/Navbar';
@@ -37,6 +38,7 @@ function App() {
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="/video" element={<VideoPage />} />
             </Routes>
           </main>
           <Footer />

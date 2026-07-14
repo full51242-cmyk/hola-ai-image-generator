@@ -10,6 +10,8 @@ function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Generate', path: '/generate' },
+    { name: 'Video', path: '/video' },
+    { name: 'Pricing', path: '/pricing' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Contact', path: '/contact' },
   ];

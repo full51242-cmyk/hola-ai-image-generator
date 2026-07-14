@@ -8,7 +8,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 30000, // 30 seconds timeout AI generation ke liye
+  timeout: 30000,
 });
 
 // Request Interceptor: Agar user logged in hai toh token automatic attach ho jaye

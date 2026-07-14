@@ -193,6 +193,49 @@ app.get('/api/images/my-images', (req, res) => {
   res.status(200).json({ success: true, data: generatedImages });
 });
 
+app.post('/api/videos', async (req, res) => {
+  try {
+    const { prompt, style, duration, quality } = req.body;
+
+    if (!prompt || typeof prompt !== 'string' || prompt.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Valid video prompt is required',
+      });
+    }
+
+    const videoPrompt = `${prompt} in ${style || 'cinematic'} style, ${duration || '8s'} duration, ${quality || '1080p'} quality`;
+
+    const videos = [
+      {
+        id: `vid-${Date.now()}`,
+        title: 'AI Generated Short Video',
+        prompt: prompt.trim(),
+        style: style || 'cinematic',
+        duration: duration || '8s',
+        quality: quality || '1080p',
+        url: `https://www.w3schools.com/html/mov_bbb.mp4`,
+        posterUrl: `https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80`,
+        createdAt: new Date().toISOString(),
+        promptForModel: videoPrompt,
+      },
+    ];
+
+    res.status(200).json({
+      success: true,
+      data: {
+        videos,
+      },
+    });
+  } catch (error) {
+    console.error('❌ Video generation error:', error);
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Failed to generate video',
+    });
+  }
+});
+
 const plans = [
   { id: 'free', name: 'Free', price: 0, credits: 10, features: ['10 credits per month', 'All styles', 'All aspect ratios'] },
 ];
